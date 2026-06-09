@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Rishabh Gaikwad — AI/ML Engineer & Full-Stack Builder</title>
+<meta name="description" content="Rishabh Gaikwad — Computer Science student building agentic AI systems, full-stack platforms, and ML. Creator of a multi-agent financial research assistant with a reliability-verification pipeline." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0A0C14; --bg-elev:#11141F; --bg-elev2:#161A28;
+    --border:#232838; --border-soft:#1B2030;
+    --text:#E8ECF4; --text-dim:#8B93A7; --text-faint:#5A6276;
+    --accent:#38E1C6; --accent2:#6E8BFF;
+    --grad:linear-gradient(120deg,var(--accent),var(--accent2));
+    --display:'Space Grotesk',sans-serif; --body:'Inter',sans-serif; --mono:'JetBrains Mono',monospace;
+    --maxw:1080px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:var(--body);line-height:1.6;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden}
+  body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:
+      radial-gradient(60vw 60vw at 78% -8%,rgba(110,139,255,.14),transparent 60%),
+      radial-gradient(55vw 55vw at 8% 12%,rgba(56,225,198,.10),transparent 55%);}
+  body::after{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.35;
+    background-image:linear-gradient(var(--border-soft) 1px,transparent 1px),linear-gradient(90deg,var(--border-soft) 1px,transparent 1px);
+    background-size:64px 64px;mask-image:radial-gradient(80% 60% at 50% 0%,#000,transparent 80%)}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;position:relative;z-index:1}
+  a{color:inherit;text-decoration:none}
+  .mono{font-family:var(--mono);font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+
+  /* NAV */
+  nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);
+    background:rgba(10,12,20,.72);border-bottom:1px solid var(--border-soft)}
+  .nav-in{max-width:var(--maxw);margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between}
+  .logo{font-family:var(--display);font-weight:700;font-size:1.05rem;letter-spacing:-.01em}
+  .logo span{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .nav-links{display:flex;gap:28px}
+  .nav-links a{font-size:.9rem;color:var(--text-dim);transition:color .2s}
+  .nav-links a:hover{color:var(--text)}
+  .nav-cta{font-family:var(--mono);font-size:.78rem;padding:8px 16px;border:1px solid var(--border);border-radius:8px;color:var(--text);transition:border-color .2s,background .2s}
+  .nav-cta:hover{border-color:var(--accent);background:rgba(56,225,198,.06)}
+  .menu-btn{display:none;background:none;border:0;color:var(--text);font-size:1.4rem;cursor:pointer}
+
+  /* HERO */
+  header{padding:72px 0 64px}
+  .hero{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+  .hero-eyebrow{margin-bottom:18px;display:inline-flex;align-items:center;gap:10px}
+  .hero-eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent);animation:pulse 2.4s ease-in-out infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+  h1{font-family:var(--display);font-weight:700;font-size:clamp(2.5rem,5.4vw,3.9rem);line-height:1.03;letter-spacing:-.02em;margin-bottom:18px}
+  h1 .grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .hero p.lead{font-size:1.12rem;color:var(--text-dim);max-width:30rem;margin-bottom:28px}
+  .hero p.lead b{color:var(--text);font-weight:600}
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap}
+  .btn{font-family:var(--mono);font-size:.82rem;padding:13px 22px;border-radius:10px;display:inline-flex;align-items:center;gap:9px;transition:transform .2s,box-shadow .2s,border-color .2s,background .2s;border:1px solid var(--border)}
+  .btn-primary{background:var(--grad);color:#06121A;font-weight:600;border:0}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 30px -10px rgba(56,225,198,.5)}
+  .btn-ghost{color:var(--text)}
+  .btn-ghost:hover{border-color:var(--accent2);background:rgba(110,139,255,.07)}
+
+  /* AGENT GRAPH SIGNATURE */
+  .graph-card{position:relative;border:1px solid var(--border);border-radius:18px;background:linear-gradient(180deg,var(--bg-elev),#0C0F1A);padding:22px;box-shadow:0 30px 80px -40px rgba(0,0,0,.8)}
+  .graph-card .tag{position:absolute;top:14px;right:16px;font-family:var(--mono);font-size:.66rem;color:var(--text-faint);letter-spacing:.08em}
+  .graph-title{font-family:var(--mono);font-size:.72rem;color:var(--text-dim);margin-bottom:8px;letter-spacing:.06em}
+  svg.flow{width:100%;height:auto;display:block}
+  .edge{fill:none;stroke:url(#eg);stroke-width:1.6;stroke-dasharray:5 7;animation:dash 1.1s linear infinite}
+  .edge.loop{stroke:var(--accent2);opacity:.7;stroke-dasharray:4 6}
+  @keyframes dash{to{stroke-dashoffset:-24}}
+  .node rect{fill:var(--bg-elev2);stroke:var(--border);stroke-width:1.2;rx:9}
+  .node.lit rect{stroke:var(--accent);filter:drop-shadow(0 0 8px rgba(56,225,198,.35))}
+  .node text{font-family:var(--mono);font-size:11px;fill:var(--text)}
+  .node .sub{fill:var(--text-faint);font-size:8.5px}
+  .nodepulse{animation:nodelit 4.8s ease-in-out infinite}
+  @keyframes nodelit{0%,72%,100%{opacity:.55}10%,62%{opacity:1}}
+
+  /* SECTION */
+  section{padding:66px 0;position:relative}
+  .sec-head{margin-bottom:36px}
+  .sec-head h2{font-family:var(--display);font-weight:600;font-size:clamp(1.7rem,3.3vw,2.2rem);letter-spacing:-.015em;margin-top:8px}
+  .sec-head p{color:var(--text-dim);max-width:40rem;margin-top:8px}
+
+  .about-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:40px}
+  .about-grid p{color:var(--text-dim);margin-bottom:14px}
+  .about-grid p b{color:var(--text);font-weight:600}
+  .facts{border:1px solid var(--border);border-radius:14px;background:var(--bg-elev);padding:6px 20px}
+  .fact{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid var(--border-soft)}
+  .fact:last-child{border-bottom:0}
+  .fact .k{font-family:var(--mono);font-size:.74rem;color:var(--text-faint);letter-spacing:.05em}
+  .fact .v{font-size:.92rem;text-align:right}
+
+  /* SKILLS */
+  .skill-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+  .skill-card{border:1px solid var(--border);border-radius:14px;background:var(--bg-elev);padding:20px 22px;transition:border-color .25s,transform .25s}
+  .skill-card:hover{border-color:var(--accent);transform:translateY(-3px)}
+  .skill-card h3{font-family:var(--mono);font-size:.76rem;color:var(--accent);letter-spacing:.07em;margin-bottom:14px;text-transform:uppercase}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{font-size:.82rem;color:var(--text-dim);border:1px solid var(--border-soft);border-radius:7px;padding:5px 11px;background:var(--bg-elev2)}
+
+  /* PROJECTS */
+  .proj-flag{border:1px solid var(--border);border-radius:18px;background:linear-gradient(135deg,rgba(56,225,198,.05),rgba(110,139,255,.05)),var(--bg-elev);padding:32px;margin-bottom:22px;position:relative;overflow:hidden}
+  .proj-flag::before{content:"";position:absolute;top:-40%;right:-10%;width:380px;height:380px;background:radial-gradient(circle,rgba(110,139,255,.16),transparent 65%);pointer-events:none}
+  .flag-label{display:inline-block;font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;color:#06121A;background:var(--grad);padding:4px 10px;border-radius:6px;font-weight:600;margin-bottom:16px}
+  .proj-flag h3{font-family:var(--display);font-weight:600;font-size:1.5rem;margin-bottom:12px;letter-spacing:-.01em}
+  .proj-flag .desc{color:var(--text-dim);max-width:46rem;margin-bottom:20px}
+  .metrics{display:flex;gap:30px;flex-wrap:wrap;margin-bottom:22px}
+  .metric .num{font-family:var(--display);font-weight:700;font-size:1.7rem;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .metric .lbl{font-family:var(--mono);font-size:.68rem;color:var(--text-faint);letter-spacing:.04em}
+  .proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  .proj{border:1px solid var(--border);border-radius:14px;background:var(--bg-elev);padding:24px;transition:border-color .25s,transform .25s;display:flex;flex-direction:column}
+  .proj:hover{border-color:var(--accent2);transform:translateY(-3px)}
+  .proj h3{font-family:var(--display);font-weight:600;font-size:1.18rem;margin-bottom:10px}
+  .proj .desc{color:var(--text-dim);font-size:.92rem;margin-bottom:16px;flex:1}
+  .tech{display:flex;flex-wrap:wrap;gap:7px}
+  .tech span{font-family:var(--mono);font-size:.7rem;color:var(--text-dim);border:1px solid var(--border-soft);border-radius:6px;padding:3px 8px}
+  .proj-links{margin-top:16px}
+  .proj-links a,.flag-links a{font-family:var(--mono);font-size:.76rem;color:var(--accent);display:inline-flex;align-items:center;gap:6px;transition:gap .2s}
+  .proj-links a:hover,.flag-links a:hover{gap:10px}
+
+  /* ACHIEVEMENTS + EDU */
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+  .ach{border-left:2px solid var(--border);padding-left:20px}
+  .ach .item{margin-bottom:22px}
+  .ach .item:last-child{margin-bottom:0}
+  .ach .item h4{font-family:var(--display);font-weight:600;font-size:1rem;margin-bottom:4px}
+  .ach .item p{color:var(--text-dim);font-size:.9rem}
+  .edu-card{border:1px solid var(--border);border-radius:14px;background:var(--bg-elev);padding:26px}
+  .edu-card h4{font-family:var(--display);font-weight:600;font-size:1.1rem;margin-bottom:4px}
+  .edu-card .meta{font-family:var(--mono);font-size:.76rem;color:var(--accent);margin-bottom:14px}
+  .edu-card p{color:var(--text-dim);font-size:.9rem}
+
+  /* CONTACT */
+  .contact{text-align:center;border:1px solid var(--border);border-radius:20px;background:linear-gradient(180deg,var(--bg-elev),#0B0E18);padding:56px 28px}
+  .contact h2{font-family:var(--display);font-weight:700;font-size:clamp(1.9rem,4vw,2.6rem);letter-spacing:-.02em;margin-bottom:14px}
+  .contact h2 .grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .contact p{color:var(--text-dim);max-width:30rem;margin:0 auto 28px}
+  .contact-links{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  footer{border-top:1px solid var(--border-soft);padding:28px 0;margin-top:20px}
+  .foot-in{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+  .foot-in span{font-family:var(--mono);font-size:.74rem;color:var(--text-faint)}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  @media(max-width:860px){
+    .hero{grid-template-columns:1fr;gap:36px}
+    .about-grid,.two-col,.proj-grid,.skill-grid{grid-template-columns:1fr}
+    .nav-links{display:none}
+    .menu-btn{display:block}
+    .nav-links.open{display:flex;position:absolute;top:58px;left:0;right:0;flex-direction:column;gap:0;background:var(--bg-elev);border-bottom:1px solid var(--border);padding:8px 24px}
+    .nav-links.open a{padding:12px 0;border-bottom:1px solid var(--border-soft)}
+  }
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important;scroll-behavior:auto!important}
+    .reveal{opacity:1;transform:none;transition:none}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-in">
+    <a href="#top" class="logo">Rishabh<span>.</span>Gaikwad</a>
+    <div class="nav-links" id="navlinks">
+      <a href="#work">Work</a>
+      <a href="#skills">Skills</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a href="mailto:Rishabhgaikwad42@gmail.com" class="nav-cta">Get in touch</a>
+    <button class="menu-btn" id="menubtn" aria-label="Menu">≡</button>
+  </div>
+</nav>
+
+<div class="wrap" id="top">
+<header>
+  <div class="hero">
+    <div class="reveal in">
+      <div class="hero-eyebrow"><span class="dot"></span><span class="mono">AI/ML Engineer · Full-Stack Builder</span></div>
+      <h1>I build <span class="grad">agentic AI</span> systems that check their own work.</h1>
+      <p class="lead">Third-year CS student at MIT-WPU, Pune. I design and ship <b>multi-agent LLM systems, full-stack platforms, and ML</b> — with a focus on reliability, evaluation, and real deployment.</p>
+      <div class="cta-row">
+        <a href="#work" class="btn btn-primary">View my work →</a>
+        <a href="https://github.com/Rishabh-11-bit" target="_blank" rel="noopener" class="btn btn-ghost">GitHub</a>
+        <a href="https://linkedin.com/in/rishabh-gaikwad-b6a20728a" target="_blank" rel="noopener" class="btn btn-ghost">LinkedIn</a>
+      </div>
+    </div>
+
+    <div class="graph-card reveal in">
+      <span class="tag">live system · LangGraph</span>
+      <div class="graph-title">// multi-agent orchestration</div>
+      <svg class="flow" viewBox="0 0 360 286" role="img" aria-label="Multi-agent pipeline: planner, retriever, analyst, verifier with a retry loop">
+        <defs>
+          <linearGradient id="eg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#38E1C6"/><stop offset="1" stop-color="#6E8BFF"/>
+          </linearGradient>
+        </defs>
+        <!-- vertical pipeline edges -->
+        <path class="edge" d="M180 62 V86"/>
+        <path class="edge" d="M180 128 V152"/>
+        <path class="edge" d="M180 194 V218"/>
+        <!-- retry loop: verifier -> analyst -->
+        <path class="edge loop" d="M260 239 H300 V173 H264"/>
+        <polygon points="270,169 262,173 270,177" fill="#6E8BFF"/>
+        <text x="314" y="206" font-family="JetBrains Mono" font-size="8" fill="#6E8BFF" transform="rotate(90 314 206)">retry on fail</text>
+        <!-- nodes top -> bottom -->
+        <g class="node lit nodepulse" style="animation-delay:0s"><rect x="100" y="20" width="160" height="42" rx="9"/><text x="180" y="39" text-anchor="middle">Planner</text><text x="180" y="51" text-anchor="middle" class="sub">decompose query</text></g>
+        <g class="node lit nodepulse" style="animation-delay:.5s"><rect x="100" y="86" width="160" height="42" rx="9"/><text x="180" y="105" text-anchor="middle">Retriever</text><text x="180" y="117" text-anchor="middle" class="sub">RAG · FAISS/Chroma</text></g>
+        <g class="node lit nodepulse" style="animation-delay:1s"><rect x="100" y="152" width="160" height="42" rx="9"/><text x="180" y="171" text-anchor="middle">Analyst</text><text x="180" y="183" text-anchor="middle" class="sub">synthesize + cite</text></g>
+        <g class="node lit nodepulse" style="animation-delay:1.5s"><rect x="100" y="218" width="160" height="42" rx="9"/><text x="180" y="237" text-anchor="middle">Verifier</text><text x="180" y="249" text-anchor="middle" class="sub">groundedness check</text></g>
+      </svg>
+      <div class="graph-title" style="margin:10px 0 0;color:var(--text-faint)">A verifier agent validates every claim against sources — cutting hallucinations ~3×.</div>
+    </div>
+  </div>
+</header>
+
+<section id="work">
+  <div class="sec-head reveal">
+    <span class="mono">01 — Selected Work</span>
+    <h2>Things I've designed, built, and shipped</h2>
+    <p>A few projects that show how I think about systems — from agent orchestration and reliability to full-stack platforms and applied ML.</p>
+  </div>
+
+  <div class="proj-flag reveal">
+    <span class="flag-label">FLAGSHIP</span>
+    <h3>Multi-Agent Financial Research Assistant</h3>
+    <p class="desc">An agentic RAG system that answers complex questions over SEC filings through four collaborating agents — a planner that decomposes the query, a retriever over a vector store, an analyst that synthesizes and cites, and a verifier that validates every claim against source documents and triggers an automatic re-draft on ungrounded output. Built with a full evaluation harness so reliability is measured, not assumed.</p>
+    <div class="metrics">
+      <div class="metric"><div class="num">~3×</div><div class="lbl">hallucination reduction</div></div>
+      <div class="metric"><div class="num">≈0.85</div><div class="lbl">answer faithfulness (RAGAS)</div></div>
+      <div class="metric"><div class="num">4</div><div class="lbl">coordinated agents</div></div>
+    </div>
+    <div class="tech" style="margin-bottom:18px">
+      <span>LangGraph</span><span>LangChain</span><span>FAISS / Chroma</span><span>sentence-transformers</span><span>RAGAS</span><span>FastAPI</span><span>Docker</span><span>AWS</span><span>Terraform</span><span>GitHub Actions</span>
+    </div>
+    <div class="flag-links"><a href="https://github.com/Rishabh-11-bit" target="_blank" rel="noopener">View on GitHub →</a></div>
+  </div>
+
+  <div class="proj-grid">
+    <div class="proj reveal">
+      <h3>AMFI — ITSM Orchestration Platform</h3>
+      <p class="desc">A full-stack platform built end-to-end: a React/TypeScript dashboard on a Python backend, integrating four monitoring systems via APIs with LDAP/OIDC/SAML auth and RBAC. Packaged as a Docker deployable and hardened from 56% → 100% across a 41-point security audit.</p>
+      <div class="tech"><span>React</span><span>TypeScript</span><span>Python</span><span>LangChain</span><span>Docker</span><span>Ansible · Terraform</span></div>
+      <div class="proj-links"><a href="https://github.com/Rishabh-11-bit" target="_blank" rel="noopener">GitHub →</a></div>
+    </div>
+    <div class="proj reveal">
+      <h3>AI Lung Cancer Detection</h3>
+      <p class="desc">A deep-learning classifier on CT-scan and X-ray images using transfer learning on ResNet-50, reaching 94% test accuracy, with Grad-CAM heatmaps that make every prediction interpretable rather than a black box.</p>
+      <div class="tech"><span>PyTorch</span><span>ResNet-50</span><span>Grad-CAM</span><span>Flask</span></div>
+      <div class="proj-links"><a href="https://github.com/Rishabh-11-bit" target="_blank" rel="noopener">GitHub →</a></div>
+    </div>
+    <div class="proj reveal">
+      <h3>Stock Market Predictor</h3>
+      <p class="desc">An end-to-end ML pipeline on financial time-series — live market data via the yfinance API, 32 engineered technical indicators, and an XGBoost classifier with a time-series-preserving split to avoid look-ahead bias, served through an interactive dashboard.</p>
+      <div class="tech"><span>Python</span><span>XGBoost</span><span>Streamlit</span><span>yfinance</span></div>
+      <div class="proj-links"><a href="https://github.com/Rishabh-11-bit" target="_blank" rel="noopener">GitHub →</a></div>
+    </div>
+    <div class="proj reveal">
+      <h3>Decentralized Voting DApp</h3>
+      <p class="desc">A tamper-resistant blockchain voting system — smart contracts developed and tested with a Hardhat workflow and a web front-end for casting votes — with an accompanying IEEE-format paper on the architecture and gas-cost analysis.</p>
+      <div class="tech"><span>Solidity</span><span>Hardhat</span><span>JavaScript</span></div>
+      <div class="proj-links"><a href="https://github.com/Rishabh-11-bit" target="_blank" rel="noopener">GitHub →</a></div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="sec-head reveal">
+    <span class="mono">02 — Toolkit</span>
+    <h2>What I build with</h2>
+  </div>
+  <div class="skill-grid">
+    <div class="skill-card reveal">
+      <h3>Generative AI & LLMs</h3>
+      <div class="chips"><span class="chip">LangChain</span><span class="chip">LangGraph</span><span class="chip">RAG</span><span class="chip">Multi-Agent / Agentic AI</span><span class="chip">Prompt Engineering</span><span class="chip">RAGAS Eval</span><span class="chip">Ollama</span></div>
+    </div>
+    <div class="skill-card reveal">
+      <h3>Machine Learning</h3>
+      <div class="chips"><span class="chip">PyTorch</span><span class="chip">scikit-learn</span><span class="chip">XGBoost</span><span class="chip">CNNs / ResNet</span><span class="chip">Grad-CAM</span><span class="chip">Model Evaluation</span></div>
+    </div>
+    <div class="skill-card reveal">
+      <h3>Full-Stack & APIs</h3>
+      <div class="chips"><span class="chip">React</span><span class="chip">TypeScript</span><span class="chip">Node.js</span><span class="chip">Python</span><span class="chip">Flask</span><span class="chip">FastAPI</span><span class="chip">REST</span></div>
+    </div>
+    <div class="skill-card reveal">
+      <h3>Cloud & DevOps</h3>
+      <div class="chips"><span class="chip">AWS</span><span class="chip">Docker</span><span class="chip">Terraform</span><span class="chip">GitHub Actions CI/CD</span><span class="chip">Ansible</span><span class="chip">Linux</span></div>
+    </div>
+    <div class="skill-card reveal">
+      <h3>Languages</h3>
+      <div class="chips"><span class="chip">Python</span><span class="chip">C++</span><span class="chip">JavaScript</span><span class="chip">TypeScript</span><span class="chip">SQL</span><span class="chip">Solidity</span></div>
+    </div>
+    <div class="skill-card reveal">
+      <h3>Data & Storage</h3>
+      <div class="chips"><span class="chip">FAISS</span><span class="chip">Chroma</span><span class="chip">MySQL</span><span class="chip">PostgreSQL</span><span class="chip">MongoDB</span><span class="chip">Pandas / NumPy</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="sec-head reveal"><span class="mono">03 — About</span><h2>How I work</h2></div>
+  <div class="about-grid">
+    <div class="reveal">
+      <p>I'm a builder at heart — I like turning ideas into systems that actually work, then measuring how well they do and improving from there. Most of my energy goes into <b>applied AI</b>: agentic LLM systems, retrieval, and the reliability layer that's usually missing.</p>
+      <p>I'm largely self-taught on the AI and deployment side, picking things up by building rather than waiting for a course to cover them. I care about doing work I can stand behind — accurate, documented, and defensible end to end.</p>
+      <p>I'm drawn to the <b>product and entrepreneurial</b> side of technology, and to problems in finance and real-world industry where AI has tangible impact.</p>
+    </div>
+    <div class="facts reveal">
+      <div class="fact"><span class="k">Based in</span><span class="v">Pune, India</span></div>
+      <div class="fact"><span class="k">Focus</span><span class="v">Agentic AI · ML · Full-Stack</span></div>
+      <div class="fact"><span class="k">Education</span><span class="v">B.Tech CSE, MIT-WPU</span></div>
+      <div class="fact"><span class="k">Graduating</span><span class="v">2027</span></div>
+      <div class="fact"><span class="k">Open to</span><span class="v">AI/ML & SWE internships</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="recognition">
+  <div class="sec-head reveal"><span class="mono">04 — Recognition & Learning</span><h2>Credentials</h2></div>
+  <div class="two-col">
+    <div class="ach reveal">
+      <div class="item"><h4>Amazon SDE Internship — Top ~1%</h4><p>Cleared the online assessment and advanced to interviews as one of only 9 candidates selected from ~1,000–1,200 applicants.</p></div>
+      <div class="item"><h4>Oracle Cloud — Generative AI Professional</h4><p>OCI certification in Generative AI (2025).</p></div>
+      <div class="item"><h4>Oracle Cloud — Data Science Professional</h4><p>OCI certification in Data Science (2025).</p></div>
+    </div>
+    <div class="edu-card reveal">
+      <h4>MIT World Peace University (MIT-WPU)</h4>
+      <div class="meta">B.Tech, Computer Science & Engineering · Pune</div>
+      <p>Expected May 2027 · CGPA 6.92 / 10</p>
+      <p style="margin-top:12px">Coursework: Machine Learning, Data Structures & Algorithms, DBMS, Operating Systems, Cloud Computing &amp; DevOps, Data Engineering &amp; Visualization.</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="contact reveal">
+    <span class="mono">05 — Contact</span>
+    <h2>Let's build something <span class="grad">that works.</span></h2>
+    <p>Open to AI/ML and software engineering internships, and happy to talk through any of the projects above in detail.</p>
+    <div class="contact-links">
+      <a href="mailto:Rishabhgaikwad42@gmail.com" class="btn btn-primary">Email me →</a>
+      <a href="https://linkedin.com/in/rishabh-gaikwad-b6a20728a" target="_blank" rel="noopener" class="btn btn-ghost">LinkedIn</a>
+      <a href="https://github.com/Rishabh-11-bit" target="_blank" rel="noopener" class="btn btn-ghost">GitHub</a>
+    </div>
+  </div>
+</section>
+</div>
+
+<footer>
+  <div class="wrap foot-in">
+    <span>© 2026 Rishabh Gaikwad</span>
+    <span>Pune, India · +91 95187 34544</span>
+  </div>
+</footer>
+
+<script>
+  // mobile menu
+  var mb=document.getElementById('menubtn'),nl=document.getElementById('navlinks');
+  mb&&mb.addEventListener('click',function(){nl.classList.toggle('open')});
+  nl&&nl.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){nl.classList.remove('open')})});
+  // scroll reveal
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+  document.querySelectorAll('.reveal:not(.in)').forEach(function(el){io.observe(el)});
+</script>
+</body>
+</html>
