@@ -238,33 +238,45 @@
     <div class="tech" style="margin-bottom:18px">
       <span>LangGraph</span><span>LangChain</span><span>FAISS / Chroma</span><span>sentence-transformers</span><span>RAGAS</span><span>FastAPI</span><span>Docker</span><span>AWS</span><span>Terraform</span><span>GitHub Actions</span>
     </div>
-    <div class="flag-links"><a href="https://github.com/Rishabh-11-bit" target="_blank" rel="noopener">View on GitHub →</a></div>
+    <div class="flag-links"><a href="https://github.com/Rishabh-11-bit/financial-research-assistant" target="_blank" rel="noopener">View on GitHub →</a></div>
   </div>
 
   <div class="proj-grid">
     <div class="proj reveal">
-      <h3>AMFI — ITSM Orchestration Platform</h3>
-      <p class="desc">A full-stack platform built end-to-end: a React/TypeScript dashboard on a Python backend, integrating four monitoring systems via APIs with LDAP/OIDC/SAML auth and RBAC. Packaged as a Docker deployable and hardened from 56% → 100% across a 41-point security audit.</p>
-      <div class="tech"><span>React</span><span>TypeScript</span><span>Python</span><span>LangChain</span><span>Docker</span><span>Ansible · Terraform</span></div>
-      <div class="proj-links"><a href="https://github.com/Rishabh-11-bit" target="_blank" rel="noopener">GitHub →</a></div>
+      <h3>AMFI v4 — Autonomous NOC Agent</h3>
+      <p class="desc">Autonomous L1/L2 incident resolution — receives alerts from Prometheus, Zabbix, SolarWinds or PRTG, runs SSH diagnostics, uses Llama 3.1 to interpret them, executes the fix, verifies it worked, and escalates with a full written brief if it can’t resolve. React dashboard with live agent feed, approval queue, and ROI analytics.</p>
+      <div class="tech"><span>Python</span><span>FastAPI</span><span>React</span><span>Llama 3.1</span><span>Docker</span><span>Nginx</span></div>
+      <div class="proj-links"><a href="https://github.com/Rishabh-11-bit/AMFI-Platform" target="_blank" rel="noopener">GitHub →</a></div>
     </div>
     <div class="proj reveal">
-      <h3>AI Lung Cancer Detection</h3>
-      <p class="desc">A deep-learning classifier on CT-scan and X-ray images using transfer learning on ResNet-50, reaching 94% test accuracy, with Grad-CAM heatmaps that make every prediction interpretable rather than a black box.</p>
-      <div class="tech"><span>PyTorch</span><span>ResNet-50</span><span>Grad-CAM</span><span>Flask</span></div>
-      <div class="proj-links"><a href="https://github.com/Rishabh-11-bit" target="_blank" rel="noopener">GitHub →</a></div>
-    </div>
-    <div class="proj reveal">
-      <h3>Stock Market Predictor</h3>
-      <p class="desc">An end-to-end ML pipeline on financial time-series — live market data via the yfinance API, 32 engineered technical indicators, and an XGBoost classifier with a time-series-preserving split to avoid look-ahead bias, served through an interactive dashboard.</p>
-      <div class="tech"><span>Python</span><span>XGBoost</span><span>Streamlit</span><span>yfinance</span></div>
-      <div class="proj-links"><a href="https://github.com/Rishabh-11-bit" target="_blank" rel="noopener">GitHub →</a></div>
+      <h3>LungAI — Lung Cancer Detection</h3>
+      <p class="desc">Deep-learning CT scan classifier using transfer learning on ResNet-50, with Grad-CAM heatmaps that make every prediction interpretable. Flask web interface for upload and real-time classification. IEEE-format research paper authored at MIT-WPU.</p>
+      <div class="tech"><span>PyTorch</span><span>ResNet-50</span><span>Grad-CAM</span><span>Flask</span><span>OpenCV</span></div>
+      <div class="proj-links"><a href="https://github.com/Rishabh-11-bit/lung-ai-cancer-detection" target="_blank" rel="noopener">GitHub →</a></div>
     </div>
     <div class="proj reveal">
       <h3>Decentralized Voting DApp</h3>
-      <p class="desc">A tamper-resistant blockchain voting system — smart contracts developed and tested with a Hardhat workflow and a web front-end for casting votes — with an accompanying IEEE-format paper on the architecture and gas-cost analysis.</p>
-      <div class="tech"><span>Solidity</span><span>Hardhat</span><span>JavaScript</span></div>
-      <div class="proj-links"><a href="https://github.com/Rishabh-11-bit" target="_blank" rel="noopener">GitHub →</a></div>
+      <p class="desc">Tamper-resistant blockchain voting — Solidity smart contracts compiled and tested via Hardhat, MetaMask wallet auth, Next.js frontend with real-time vote tracking. Accompanied by an IEEE-format research paper on the architecture and gas-cost analysis.</p>
+      <div class="tech"><span>Solidity</span><span>Hardhat</span><span>Next.js</span><span>Ethers.js</span><span>MetaMask</span></div>
+      <div class="proj-links"><a href="https://github.com/Rishabh-11-bit/Decentralised-Voting-DApp" target="_blank" rel="noopener">GitHub →</a></div>
+    </div>
+    <div class="proj reveal">
+      <h3>AR Language Learning Assistant</h3>
+      <p class="desc">Desktop AR app that detects real-world objects through a webcam and teaches their names in 7 languages with speech synthesis — turning everyday surroundings into an interactive language lesson. Presented at an IEEE student conference.</p>
+      <div class="tech"><span>Python</span><span>OpenCV</span><span>AR</span><span>Speech Synthesis</span><span>Computer Vision</span></div>
+      <div class="proj-links"><a href="https://github.com/Rishabh-11-bit/ar-language-learning-assistant" target="_blank" rel="noopener">GitHub →</a></div>
+    </div>
+    <div class="proj reveal">
+      <h3>Bookstore DevOps Pipeline</h3>
+      <p class="desc">End-to-end CI/CD pipeline for a containerized bookstore app — GitHub Actions for automated testing, Docker multi-stage builds, and environment-separated deployment. A practical showcase of modern DevOps workflow.</p>
+      <div class="tech"><span>Docker</span><span>GitHub Actions</span><span>CI/CD</span><span>DevOps</span></div>
+      <div class="proj-links"><a href="https://github.com/Rishabh-11-bit/bookstore-devops-pipeline" target="_blank" rel="noopener">GitHub →</a></div>
+    </div>
+    <div class="proj reveal">
+      <h3>Smart Food Order Reallocation</h3>
+      <p class="desc">Java Swing app simulating intelligent reallocation of cancelled food orders to nearby customers, with real-time cross-device sync over local network using Java Sockets. Multi-user login, persistent shared order storage, live team dashboard.</p>
+      <div class="tech"><span>Java</span><span>Java Swing</span><span>Java Sockets</span><span>Multithreading</span></div>
+      <div class="proj-links"><a href="https://github.com/Rishabh-11-bit/mpj-smart-reallocation" target="_blank" rel="noopener">GitHub →</a></div>
     </div>
   </div>
 </section>
