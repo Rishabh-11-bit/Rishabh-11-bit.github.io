@@ -729,7 +729,11 @@ addEventListener('keyup',function(e){keys[e.key.toLowerCase()]=false;});
 addEventListener('blur',function(){keys={};targetX=null;targetY=null;});
 
 addEventListener('pointerdown',function(e){
-  if(!started || e.target.closest('#minimap') || e.target.closest('#charselect') || e.target.closest('a') || e.target.closest('button')) return;
+  if(e.target.closest('#minimap') || e.target.closest('#charselect') || e.target.closest('a') || e.target.closest('button')) return;
+  if(!started) {
+    started=true;
+    setTimeout(function(){var h=document.getElementById('hud');if(h)h.classList.add('hide');},2600);
+  }
   if(e.pointerType === 'mouse' && e.button !== 0) return;
   
   var clientX = e.clientX, clientY = e.clientY;
