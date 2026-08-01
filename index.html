@@ -306,10 +306,17 @@ a:hover{background:var(--hl)}
 #minimap-key b{color:var(--red)}
 #minimap{width:160px;height:130px;background:rgba(243,233,207,.9);border:2px solid var(--ink-faint);border-radius:4px;box-shadow:0 4px 12px rgba(0,0,0,.25);overflow:hidden;pointer-events:auto}
 #minimap canvas{display:block;width:100%;height:100%}
-/* ---- MOBILE HUD ---- */
+/* ---- MOBILE HUD & TWEAKS ---- */
 @media(max-width:760px){
   .desktop-only{display:none!important}
   .mobile-only{display:inline-block!important}
+}
+@media(max-width:600px){
+  .pp-sheet{width:94vw;padding:24px 16px 30px}
+  .pp-sheet::before{left:12px}
+  .pp-tag,.pp-title,.pp-tags,.pp-body,.pp-metrics,.pp-stack,.pp-link,.pp-return{margin-left:12px}
+  #torchHint{width:90%;text-align:center;font-size:1.3rem}
+  #hud{font-size:.6rem;left:8px;right:8px;padding:6px;text-align:center}
 }
 </style>
 </head>
