@@ -245,12 +245,10 @@ a:hover{background:var(--hl)}
 
 /* The darkness overlay — torch punches a radial hole that expands to fill the screen */
 #torch-darkness{position:absolute;inset:0;z-index:2;pointer-events:none;
-  background:rgba(5,5,10,.97);
-  transition:opacity .8s ease;
-  -webkit-mask-image:radial-gradient(circle var(--torch-r,0px) at var(--tx,50%) var(--ty,50%),
-    transparent 50%,rgba(0,0,0,.4) 70%,black 100%);
-  mask-image:radial-gradient(circle var(--torch-r,0px) at var(--tx,50%) var(--ty,50%),
-    transparent 50%,rgba(0,0,0,.4) 70%,black 100%)}
+  background:rgba(5,5,10,.97); /* Fallback */
+  background:radial-gradient(circle var(--torch-r,0.1px) at var(--tx,50%) var(--ty,50%),
+    transparent 0%,rgba(5,5,10,.8) 70%,rgba(5,5,10,.98) 100%);
+  transition:opacity .8s ease}
 #torch-darkness.gone{opacity:0}
 
 /* Torch glow overlay — warm light flash */
@@ -970,7 +968,7 @@ function showProjectPage(proj){
   // Reset torch darkness
   var dark=document.getElementById('torch-darkness');
   dark.classList.remove('lit','flicker','gone');
-  dark.style.setProperty('--torch-r','0px');
+  dark.style.setProperty('--torch-r','0.1px');
   document.getElementById('torch-glow').classList.remove('on');
 }
 
