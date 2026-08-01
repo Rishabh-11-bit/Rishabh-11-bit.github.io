@@ -151,7 +151,7 @@ a:hover{background:var(--hl)}
 @keyframes pop{from{transform:rotate(9deg) scale(.3);opacity:0}to{transform:rotate(9deg) scale(1);opacity:1}}
 
 /* ---- CHARACTER ---- */
-#guy{position:fixed;z-index:55;pointer-events:none;will-change:transform;transition:opacity .3s}
+#guy{position:fixed;z-index:59;pointer-events:none;will-change:transform;transition:opacity .3s}
 #guy .shadow{position:absolute;bottom:-4px;left:50%;transform:translateX(-50%);width:40px;height:10px;
   background:rgba(0,0,0,.3);border-radius:50%;filter:blur(2px)}
 #guycanvas{display:block;image-rendering:pixelated}
@@ -696,6 +696,7 @@ var animFrame=0,animTimer=0,charState='idle';
 var activeDoc=null,diving=false;
 var inProject=false,torchLit=false,torchPhase=0;
 var ppCharX=0,ppCharY=0;
+var ppTargetX=null,ppTargetY=null;
 var attackCd=0,lastFoot=0,lastTorchParticle=0;
 // Initialise camera to match spawn position so there's no jump
 var vw=innerWidth,vh=innerHeight;
@@ -757,8 +758,20 @@ addEventListener('pointerdown',function(e){
     clientY = e.touches[0].clientY;
   }
   
-  var charScreenX = inProject ? ppCharX : x + camX;
-  var charScreenY = inProject ? ppCharY : y + camY;
+  if(inProject && !diving) {
+    if(!torchLit) {
+      ppCharX = clientX;
+      ppCharY = clientY;
+      lightTorch();
+      return;
+    }
+    ppTargetX = clientX;
+    ppTargetY = clientY;
+    return;
+  }
+  
+  var charScreenX = x + camX;
+  var charScreenY = y + camY;
   
   var cx = charScreenX;
   var cy = charScreenY - CHAR_H/2;
@@ -1112,8 +1125,22 @@ function loop(){
     var up=keys.w||keys.arrowup,dn=keys.s||keys.arrowdown,lf=keys.a||keys.arrowleft,rt=keys.d||keys.arrowright;
     if(torchLit&&torchPhase>=2){
       var pdx=0,pdy=0;
+      if(rt||lf||dn||up){ppTargetX=null;ppTargetY=null;} // Keyboard override
       if(rt)pdx+=1;if(lf)pdx-=1;if(dn)pdy+=1;if(up)pdy-=1;
-      if(pdx!==0&&pdy!==0){pdx*=0.707;pdy*=0.707;}
+      if(pdx!==0||pdy!==0){
+        if(pdx!==0&&pdy!==0){pdx*=0.707;pdy*=0.707;}
+      } else if(ppTargetX!==null&&ppTargetY!==null) {
+        var tx = ppTargetX - ppCharX;
+        var ty = ppTargetY - ppCharY;
+        var dist = Math.sqrt(tx*tx + ty*ty);
+        if(dist > WALK_SPEED) {
+          pdx = tx/dist;
+          pdy = ty/dist;
+        } else {
+          ppCharX = ppTargetX; ppCharY = ppTargetY;
+          ppTargetX = null; ppTargetY = null;
+        }
+      }
       if(pdx>0)facing=1;else if(pdx<0)facing=-1;
       ppCharX+=pdx*WALK_SPEED;ppCharY+=pdy*WALK_SPEED;
       ppCharX=Math.max(40,Math.min(innerWidth-40,ppCharX));
