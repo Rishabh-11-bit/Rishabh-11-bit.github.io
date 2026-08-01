@@ -756,6 +756,19 @@ addEventListener('pointerdown',function(e){
     clientY = e.touches[0].clientY;
   }
   
+  var charScreenX = inProject ? ppCharX : x + camX;
+  var charScreenY = inProject ? ppCharY : y + camY;
+  
+  var cx = charScreenX;
+  var cy = charScreenY - CHAR_H/2;
+  var dist = Math.sqrt(Math.pow(clientX - cx, 2) + Math.pow(clientY - cy, 2));
+  
+  if(dist < 60) {
+    var ev = new KeyboardEvent('keydown', {key: 'Enter'});
+    dispatchEvent(ev);
+    return;
+  }
+  
   if(inProject && !diving) {
     if(!torchLit) {
       ppCharX = clientX;
@@ -768,19 +781,7 @@ addEventListener('pointerdown',function(e){
     return;
   }
   
-  var charScreenX = x + camX;
-  var charScreenY = y + camY;
-  
-  var cx = charScreenX;
-  var cy = charScreenY - CHAR_H/2;
-  var dist = Math.sqrt(Math.pow(clientX - cx, 2) + Math.pow(clientY - cy, 2));
-  
-  if(dist < 60) {
-    var ev = new KeyboardEvent('keydown', {key: 'Enter'});
-    dispatchEvent(ev);
-    return;
-  }
-  
+
   if(!inProject && !diving) {
      targetX = clientX - camX;
      targetY = clientY - camY;
