@@ -524,7 +524,10 @@ a:hover{background:var(--hl)}
 <div id="transition" aria-hidden="true"><div class="trans-bg"></div><div class="trans-streaks"></div><div class="trans-text" id="transtext"></div></div>
 
 <!-- Torch hint -->
-<div id="torchHint">▸ Press Enter to light torch</div>
+<div id="torchHint">
+  <span class="desktop-only">▸ Press Enter to light torch</span>
+  <span class="mobile-only" style="display:none;">▸ Tap character to light torch</span>
+</div>
 
 <!-- Character -->
 <div id="guy"><div class="shadow"></div><canvas id="guycanvas" width="64" height="64"></canvas></div>
@@ -728,12 +731,17 @@ addEventListener('keydown',function(e){
 addEventListener('keyup',function(e){keys[e.key.toLowerCase()]=false;});
 addEventListener('blur',function(){keys={};targetX=null;targetY=null;});
 
+function startGame() {
+  if(started) return;
+  started=true;
+  var cs = document.getElementById('charselect');
+  if(cs) { cs.style.opacity='0'; cs.style.pointerEvents='none'; }
+  setTimeout(function(){var h=document.getElementById('hud');if(h)h.classList.add('hide');},2600);
+}
+
 addEventListener('pointerdown',function(e){
   if(e.target.closest('#minimap') || e.target.closest('#charselect') || e.target.closest('a') || e.target.closest('button')) return;
-  if(!started) {
-    started=true;
-    setTimeout(function(){var h=document.getElementById('hud');if(h)h.classList.add('hide');},2600);
-  }
+  if(!started) startGame();
   if(e.pointerType === 'mouse' && e.button !== 0) return;
   
   var clientX = e.clientX, clientY = e.clientY;
@@ -844,8 +852,13 @@ function attack(){
 }
 
 /* ===== PORTAL DIVE WITH ZOOM ===== */
-function diveIntoProject(doc){
-  var idx=+doc.dataset.project;
+function diveIntoProject(docEl){
+  if(diving||inProject)return;
+  diving=true;activeDoc=docEl;
+  var mw = document.getElementById('minimap-wrap');
+  if(mw) mw.style.opacity = '0';
+  
+  var idx=+docEl.dataset.project;
   if(idx<0||idx>=PROJECTS.length)return;
   diving=true;charState='idle';animFrame=0;
   var proj=PROJECTS[idx];
@@ -1013,6 +1026,8 @@ function returnFromProject(){
     document.getElementById('torch-darkness').classList.remove('lit','flicker','gone');
     document.getElementById('torch-glow').classList.remove('on');
     portal.classList.add('closing');setTimeout(function(){portal.remove();},500);
+    var mw = document.getElementById('minimap-wrap');
+    if(mw) mw.style.opacity = '';
   },1000);
 
   setTimeout(function(){
@@ -1139,9 +1154,12 @@ requestAnimationFrame(loop);
 
 // HUD hint
 var started=false;
-addEventListener('keydown',function(e){if(started)return;
+addEventListener('keydown',function(e){
+  if(started)return;
   if('wasd'.indexOf(e.key.toLowerCase())>-1||e.key.indexOf('Arrow')===0){
-    started=true;setTimeout(function(){var h=document.getElementById('hud');if(h)h.classList.add('hide');},2600);}});
+    startGame();
+  }
+});
 })();
 </script>
 </body>
