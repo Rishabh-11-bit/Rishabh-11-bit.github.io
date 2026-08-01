@@ -306,8 +306,11 @@ a:hover{background:var(--hl)}
 #minimap-key b{color:var(--red)}
 #minimap{width:160px;height:130px;background:rgba(243,233,207,.9);border:2px solid var(--ink-faint);border-radius:4px;box-shadow:0 4px 12px rgba(0,0,0,.25);overflow:hidden;pointer-events:auto}
 #minimap canvas{display:block;width:100%;height:100%}
-
-/* Mobile fallback removed, tap-to-move implemented */
+/* ---- MOBILE HUD ---- */
+@media(max-width:760px){
+  .desktop-only{display:none!important}
+  .mobile-only{display:inline-block!important}
+}
 </style>
 </head>
 <body>
@@ -527,7 +530,10 @@ a:hover{background:var(--hl)}
 <div id="guy"><div class="shadow"></div><canvas id="guycanvas" width="64" height="64"></canvas></div>
 
 <!-- HUD -->
-<div id="hud"><span>▚ walk the map:</span> <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> <span>· stand on a file + <kbd>Enter</kbd> to portal in</span></div>
+<div id="hud">
+  <span class="desktop-only"><span>▚ walk the map:</span> <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> <span>· stand on a file + <kbd>Enter</kbd> to portal in</span></span>
+  <span class="mobile-only" style="display:none;"><span>▚ tap anywhere to walk · tap character to portal in</span></span>
+</div>
 
 <!-- Character select -->
 <div id="charselect" aria-label="Select character">
@@ -593,7 +599,6 @@ fetch('https://api.github.com/users/Rishabh-11-bit').then(function(r){return r.o
   el.textContent='github.com/Rishabh-11-bit · '+d.public_repos+' repos · '+d.followers+' watchers';
 }).catch(function(){});
 
-if(touch)return;
 
 /* ===== CHARACTER DRAWING ===== */
 var CHAR_W=64,CHAR_H=64;
