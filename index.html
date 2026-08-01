@@ -19,7 +19,7 @@
   --stampf:'Bebas Neue',sans-serif;--tw:'Special Elite',monospace;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{width:100%;height:100%;overflow:hidden;background:#a89870}
+html,body{width:100%;height:100%;overflow:hidden;background:#a89870;touch-action:none}
 body{color:var(--ink);font-family:var(--type);line-height:1.55;-webkit-font-smoothing:antialiased}
 
 /* ---- VIEWPORT ---- */
@@ -729,25 +729,31 @@ addEventListener('keyup',function(e){keys[e.key.toLowerCase()]=false;});
 addEventListener('blur',function(){keys={};targetX=null;targetY=null;});
 
 addEventListener('pointerdown',function(e){
-  if(!started || e.target.closest('#minimap') || e.target.closest('#charselect') || e.target.closest('a')) return;
-  if(e.button !== 0 && e.type !== 'touchstart') return;
+  if(!started || e.target.closest('#minimap') || e.target.closest('#charselect') || e.target.closest('a') || e.target.closest('button')) return;
+  if(e.pointerType === 'mouse' && e.button !== 0) return;
+  
+  var clientX = e.clientX, clientY = e.clientY;
+  if(clientX === undefined && e.touches && e.touches.length > 0) {
+    clientX = e.touches[0].clientX;
+    clientY = e.touches[0].clientY;
+  }
   
   var charScreenX = inProject ? ppCharX : x + camX;
   var charScreenY = inProject ? ppCharY : y + camY;
   
   var cx = charScreenX;
   var cy = charScreenY - CHAR_H/2;
-  var dist = Math.sqrt(Math.pow(e.clientX - cx, 2) + Math.pow(e.clientY - cy, 2));
+  var dist = Math.sqrt(Math.pow(clientX - cx, 2) + Math.pow(clientY - cy, 2));
   
-  if(dist < 50) {
+  if(dist < 60) {
     var ev = new KeyboardEvent('keydown', {key: 'Enter'});
     dispatchEvent(ev);
     return;
   }
   
   if(!inProject && !diving) {
-     targetX = e.clientX - camX;
-     targetY = e.clientY - camY;
+     targetX = clientX - camX;
+     targetY = clientY - camY;
   }
 });
 
