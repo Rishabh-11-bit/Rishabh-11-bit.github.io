@@ -335,19 +335,23 @@ a:hover{background:var(--hl)}
   <div class="map-path map-path-v" style="top:380px;left:1610px;height:170px"></div>
   <!-- P1 to Row 3 -->
   <div class="map-path map-path-v" style="top:780px;left:1610px;height:40px"></div>
-  <div class="map-path map-path-h" style="top:820px;left:970px;width:1100px"></div>
+  <!-- Row 1 horizontal path (from P2 to P5) -->
+  <div class="map-path map-path-h" style="top:820px;left:970px;width:1650px"></div>
+  <!-- Drops to P2, P3, P4, P5 -->
   <div class="map-path map-path-v" style="top:820px;left:970px;height:80px"></div>
   <div class="map-path map-path-v" style="top:820px;left:1520px;height:80px"></div>
   <div class="map-path map-path-v" style="top:820px;left:2070px;height:80px"></div>
-  <!-- Row 3 to Row 4 -->
-  <div class="map-path map-path-v" style="top:1100px;left:970px;height:200px"></div>
-  <div class="map-path map-path-v" style="top:1100px;left:1520px;height:200px"></div>
-  <div class="map-path map-path-v" style="top:1100px;left:2070px;height:200px"></div>
-  <!-- P7 to P8 -->
-  <div class="map-path map-path-h" style="top:1380px;left:2070px;width:380px"></div>
-  <!-- Row 4 to Row 5 -->
-  <div class="map-path map-path-v" style="top:1500px;left:1520px;height:120px"></div>
+  <div class="map-path map-path-v" style="top:820px;left:2620px;height:80px"></div>
+  
+  <!-- Row 1 to Row 2 (Drops from P2->P6, P3->P7, P4->P8) -->
+  <div class="map-path map-path-v" style="top:1150px;left:970px;height:150px"></div>
+  <div class="map-path map-path-v" style="top:1150px;left:1520px;height:150px"></div>
+  <div class="map-path map-path-v" style="top:1150px;left:2070px;height:150px"></div>
+
+  <!-- Row 2 to Skills/Experience/Contact -->
+  <div class="map-path map-path-v" style="top:1550px;left:1520px;height:70px"></div>
   <div class="map-path map-path-h" style="top:1620px;left:620px;width:1690px"></div>
+  <!-- Drops to bottom row elements -->
   <div class="map-path map-path-v" style="top:1620px;left:620px;height:130px"></div>
   <div class="map-path map-path-v" style="top:1620px;left:1190px;height:130px"></div>
   <div class="map-path map-path-v" style="top:1620px;left:1770px;height:130px"></div>
@@ -410,8 +414,7 @@ a:hover{background:var(--hl)}
     <div class="hint">▸ Enter to inspect</div>
   </div>
 
-  <!-- Projects (Row 2) -->
-  <div class="zone card blue doc" id="proj-4" data-project="4" data-nick="P5" data-label="Voting DApp" style="left:800px;top:1300px">
+  <div class="zone card blue doc" id="proj-4" data-project="4" data-nick="P5" data-label="Voting DApp" style="left:2450px;top:900px">
     <span class="pin"></span><div class="tags">Blockchain</div>
     <h3>Decentralized Voting DApp</h3>
     <p>On-chain tamper-resistant voting with Solidity + Next.js + MetaMask.</p>
@@ -419,7 +422,8 @@ a:hover{background:var(--hl)}
     <div class="hint">▸ Enter to inspect</div>
   </div>
 
-  <div class="zone card doc" id="proj-5" data-project="5" data-nick="P6" data-label="AR Assistant" style="left:1350px;top:1300px">
+  <!-- Projects (Row 2) -->
+  <div class="zone card doc" id="proj-5" data-project="5" data-nick="P6" data-label="AR Assistant" style="left:800px;top:1300px">
     <span class="pin"></span><div class="tags">Computer Vision · AR</div>
     <h3>AR Language Learning Assistant</h3>
     <p>Webcam AR — detects objects, teaches names in 7 languages with speech synthesis.</p>
@@ -427,7 +431,7 @@ a:hover{background:var(--hl)}
     <div class="hint">▸ Enter to inspect</div>
   </div>
 
-  <div class="zone card green doc" id="proj-6" data-project="6" data-nick="P7" data-label="Bookstore CI/CD" style="left:1900px;top:1300px">
+  <div class="zone card green doc" id="proj-6" data-project="6" data-nick="P7" data-label="Bookstore CI/CD" style="left:1350px;top:1300px">
     <span class="pin"></span><div class="tags">DevOps</div>
     <h3>Bookstore DevOps Pipeline</h3>
     <p>End-to-end CI/CD — GitHub Actions, Docker multi-stage, environment-separated deploy.</p>
@@ -435,7 +439,7 @@ a:hover{background:var(--hl)}
     <div class="hint">▸ Enter to inspect</div>
   </div>
 
-  <div class="zone card doc" id="proj-7" data-project="7" data-nick="P8" data-label="Food Realloc" style="left:2450px;top:1300px">
+  <div class="zone card doc" id="proj-7" data-project="7" data-nick="P8" data-label="Food Realloc" style="left:1900px;top:1300px">
     <span class="pin"></span><div class="tags">Systems · Java</div>
     <h3>Smart Food Order Reallocation</h3>
     <p>Java Swing app — cancelled order reallocation with LAN sync via Sockets.</p>
